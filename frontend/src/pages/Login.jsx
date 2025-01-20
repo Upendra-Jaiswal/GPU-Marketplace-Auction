@@ -21,7 +21,7 @@ const Login = () => {
 
     try {
       const result = await handleSignin(email, password);
-      console.log(result);
+    //  console.log(result);
       if (result.success) {
         localStorage.setItem("token", result.token);
 

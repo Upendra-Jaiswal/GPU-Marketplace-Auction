@@ -180,7 +180,7 @@ const closeAuction = async (req, res) => {
   const { gpuId } = req.params; // Get GPU ID from the route parameter
   const gpu = await GPU.findById(gpuId);
   const userId = req.user._id;
-  console.log(userId, "userid");
+//  console.log(userId, "userid");
   const { status } = req.body; // Get the status from the request body
 
   if (status !== "closed") {
@@ -201,7 +201,7 @@ const closeAuction = async (req, res) => {
     // console.log(bids, "bids");
     const highestBidder = bids[0].bidder;
 
-    console.log(userId, "useridd");
+
 
     //  return;
 

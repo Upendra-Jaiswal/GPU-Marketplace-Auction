@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   const handleLogout = async () => {
     try {
       const result = await authServiceLogout();
-      console.log(result);
+    //  console.log(result);
       if (result.success) {
         setIsAuthenticated(false);
         localStorage.removeItem("token");

@@ -114,7 +114,7 @@ const signIn = async (req, res) => {
       sameSite: "None", // Adjust based on your needs
     });
 
-    console.log(token);
+   // console.log(token);
 
     res.status(200).json({ token, user });
   } catch (error) {

@@ -27,7 +27,7 @@ const Dashboard = () => {
         setUser(data.userId);
         setBoughtGPUs(data.boughtGPUs);
         setBids(data.bids);
-        console.log(data.bids);
+      //  console.log(data.bids);
       } catch (error) {
         setErrorMessage(error.message);
       }

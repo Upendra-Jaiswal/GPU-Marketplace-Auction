@@ -38,7 +38,7 @@ export const signin = async (email, password) => {
 
     if (response.ok) {
       const result = await response.json();
-      console.log(result, "result", result.token, "result.token");
+     // console.log(result, "result", result.token, "result.token");
       return { success: true, token: result.token, user: result.user };
     } else {
       const errorData = await response.json();
