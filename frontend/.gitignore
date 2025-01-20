@@ -1,0 +1,36 @@
+# Node modules
+/node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.* 
+
+# Coverage
+coverage/
+
+# Build directories
+build/
+dist/
+
+# IDE/editor directories
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Package lock files (if you don’t want to commit them)
+package-lock.json
+yarn.lock
+
+# Test directories or files
+test/
+tests/
