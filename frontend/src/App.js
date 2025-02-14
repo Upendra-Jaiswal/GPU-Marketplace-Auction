@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import "./App.css";
 
 import { createContext } from "react";
+import LandingPage from "./pages/LandingPage";
 
 export const AuthContext = createContext();
 
@@ -22,9 +23,11 @@ function App() {
     <AuthProvider>
       <Router>
         <NavBar />
+
         <div>
           <Routes>
-            <Route path="/" element={<GPUListings />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/gpulistings" element={<GPUListings />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 

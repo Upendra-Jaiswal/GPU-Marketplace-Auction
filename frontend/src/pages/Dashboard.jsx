@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaTrash, FaEdit, FaRegHandshake, FaLock } from "react-icons/fa";
-import { fetchDashboardData, deleteGPU } from "../services/api";
+import {
+  fetchDashboardData,
+  deleteGPU,
+  closeAuction,
+  addGPU,
+} from "../services/api";
 
 const Dashboard = () => {
   const [listedGPUs, setListedGPUs] = useState([]);
@@ -27,7 +32,7 @@ const Dashboard = () => {
         setUser(data.userId);
         setBoughtGPUs(data.boughtGPUs);
         setBids(data.bids);
-      //  console.log(data.bids);
+        //  console.log(data.bids);
       } catch (error) {
         setErrorMessage(error.message);
       }
@@ -71,54 +76,54 @@ const Dashboard = () => {
                 className="flex justify-between items-center p-3 border rounded-lg hover:bg-gray-50 transition duration-200 ease-in-out"
               >
                 <span className="text-gray-700">{gpu.name}</span>
-                {gpu.status === "closed" ? (
-                  <span className="text-red-900 font-semibold">
-                    <span className="flex items-center gap-2 bg-gradient-to-r from-red-900 to-pink-900 text-white px-5 py-2 rounded-full hover:from-red-600 hover:to-pink-600 shadow-md transition-all duration-200 ease-in-out">
-                      Auction Completed
-                    </span>
-                  </span>
-                ) : (
-                  <span className="text-red-700 font-semibold">
-                    <span className="flex items-center gap-2 bg-gradient-to-r from-red-700 to-pink-700 text-white px-5 py-2 rounded-full hover:from-red-600 hover:to-pink-600 shadow-md transition-all duration-200 ease-in-out">
-                      Auction is Live
-                    </span>
-                  </span>
-                )}
 
                 {gpu.owner === user && (
-                  <button
-                    className={`flex items-center gap-2 px-5 py-2 rounded-full shadow-md transition-all duration-200 ease-in-out 
-                   bg-gray-400 text-white cursor-not-allowed`}
-                  >
-                    <Link
-                      to={`/placebid`}
-                      state={{ gpu }}
-                      className="flex items-center gap-2"
+                  <div className="flex items-center gap-4">
+                    <button
+                      className={`flex items-center gap-2 px-5 py-2 rounded-full shadow-md transition-all duration-200 ease-in-out ${
+                        gpu.status !== "closed"
+                          ? "bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:from-purple-600 hover:to-indigo-600"
+                          : "bg-gray-700 text-gray-400 cursor-not-allowed"
+                      }`}
+                      onClick={() =>
+                        gpu.status !== "closed" && closeAuction(gpu._id)
+                      }
+                      disabled={gpu.status === "closed"}
                     >
-                      <FaRegHandshake />
+                      <FaLock />{" "}
+                      {gpu.status !== "closed"
+                        ? "Close Auction"
+                        : "Auction Closed"}
+                    </button>
 
-                      <span>View Bid</span>
-                    </Link>
-                  </button>
-                )}
-                {gpu.owner === user && (
-                  <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white px-5 py-2 rounded-full hover:from-blue-600 hover:to-teal-600 shadow-md transition-all duration-200 ease-in-out">
-                    <FaEdit />{" "}
-                    <Link to={`/editgpu`} state={{ gpuId: gpu._id }}>
-                      Edit{" "}
-                    </Link>
-                  </button>
-                )}
-                {gpu.owner === user && (
-                  <button
-                    onClick={() => handleDeleteGPU(gpu._id)}
-                    // onClick={() => {
-                    //   setGpus(gpus.filter((item) => item._id !== gpu._id)); // Frontend deletion logic
-                    // }}
-                    className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-5 py-2 rounded-full hover:from-red-600 hover:to-pink-600 shadow-md transition-all duration-200 ease-in-out"
-                  >
-                    Delete
-                  </button>
+                    <button
+                      onClick={() => handleDeleteGPU(gpu._id)}
+                      className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-5 py-2 rounded-full hover:from-red-600 hover:to-pink-600 shadow-md transition-all duration-200 ease-in-out"
+                    >
+                      Delete
+                    </button>
+
+                    <button
+                      className={`flex items-center gap-2 px-5 py-2 rounded-full shadow-md transition-all duration-200 ease-in-out 
+                   bg-gray-400 text-white cursor-not-allowed`}
+                    >
+                      <Link
+                        to={`/placebid`}
+                        state={{ gpu }}
+                        className="flex items-center gap-2"
+                      >
+                        <FaRegHandshake />
+
+                        <span>View Bid</span>
+                      </Link>
+                    </button>
+                    <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white px-5 py-2 rounded-full hover:from-blue-600 hover:to-teal-600 shadow-md transition-all duration-200 ease-in-out">
+                      <FaEdit />{" "}
+                      <Link to={`/editgpu`} state={{ gpuId: gpu._id }}>
+                        Edit{" "}
+                      </Link>
+                    </button>
+                  </div>
                 )}
               </li>
             ))}

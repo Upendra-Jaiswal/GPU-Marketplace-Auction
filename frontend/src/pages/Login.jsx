@@ -25,7 +25,7 @@ const Login = () => {
       if (result.success) {
         localStorage.setItem("token", result.token);
 
-        navigate("/"); // Redirect to homepage after successful signin
+        navigate("/gpulistings"); // Redirect to homepage after successful signin
       }
     } catch (err) {
       setError(err.message);

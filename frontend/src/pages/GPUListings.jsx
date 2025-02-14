@@ -119,7 +119,7 @@ const GPUList = () => {
             to="/addgpu"
             className="bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-200 ease-in-out"
           >
-            Add GPU
+            Sell your GPU here
           </Link>
         </div>
 

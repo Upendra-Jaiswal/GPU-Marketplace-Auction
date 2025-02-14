@@ -36,7 +36,7 @@ const AddGpu = () => {
           price: "",
           description: "",
         });
-        navigate("/"); // Redirect user to homepage or another page if needed
+        navigate("/gpulistings"); // Redirect user to homepage or another page if needed
       }
     } catch (error) {
       setLoading(false);

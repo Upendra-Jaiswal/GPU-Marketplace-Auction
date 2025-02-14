@@ -89,6 +89,23 @@ const fetchAllGPUs = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server error", error });
   }
+
+  //const userId = req.user._id;
+
+  // try {
+  //   const gpus = await GPU.find();
+  //  // const user = await User.findById(userId).populate("listedGPUs");
+
+  //   if (gpus.length === 0) {
+  //     return res.status(404).json({ message: "No GPUs found" });
+  //   }
+
+  //   // Respond with the list of GPUs
+  //   res.status(200).json({ gpus });
+  // } catch (error) {
+  //   console.error(error);
+  //   res.status(500).json({ message: "Server error", error });
+  // }
 };
 
 const fetchGPUById = async (req, res) => {

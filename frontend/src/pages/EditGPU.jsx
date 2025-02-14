@@ -54,7 +54,7 @@ const GPUEdit = () => {
 
       if (response.status === 200) {
         alert("GPU details updated successfully!");
-        navigate("/"); // Redirect after successful update
+        navigate("/gpulistings"); // Redirect after successful update
       } else {
         alert("Failed to update GPU details.");
       }
