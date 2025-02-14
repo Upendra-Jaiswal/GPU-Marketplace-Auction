@@ -26,24 +26,15 @@ const NavBar = () => {
               Home
             </NavLink>
           </li>
-          {/* <li>
+
+          <li>
             <NavLink
               to="/gpulistings"
               className="text-white hover:text-gray-400"
             >
-              Browse GPUs
-            </NavLink>
-          </li> */}
-          <li>
-            <NavLink to="/gpulistings" className="text-white hover:text-gray-400">
               Live Auctions
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink to="/sell" className="text-white hover:text-gray-400">
-              Sell GPU
-            </NavLink>
-          </li> */}
 
           {isAuthenticated && (
             <>
@@ -95,22 +86,30 @@ const NavBar = () => {
       {isOpen && (
         <ul className="flex flex-col mt-4 space-y-2 md:hidden">
           <li>
-            <NavLink to="/" onClick={() => setIsOpen(false)}>
+            <NavLink
+              to="/"
+              onClick={() => setIsOpen(false)}
+              className="text-white"
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/browse" onClick={() => setIsOpen(false)}>
-              Browse GPUs
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/auctions" onClick={() => setIsOpen(false)}>
+            <NavLink
+              to="/gpulistings"
+              className="text-white"
+              onClick={() => setIsOpen(false)}
+            >
               Live Auctions
             </NavLink>
           </li>
+
           <li>
-            <NavLink to="/sell" onClick={() => setIsOpen(false)}>
+            <NavLink
+              to="/addgpu"
+              className="text-white"
+              onClick={() => setIsOpen(false)}
+            >
               Sell GPU
             </NavLink>
           </li>
@@ -118,12 +117,11 @@ const NavBar = () => {
           {isAuthenticated && (
             <>
               <li>
-                <NavLink to="/addgpu" onClick={() => setIsOpen(false)}>
-                  Add GPU
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard" onClick={() => setIsOpen(false)}>
+                <NavLink
+                  to="/dashboard"
+                  className="text-white"
+                  onClick={() => setIsOpen(false)}
+                >
                   Dashboard
                 </NavLink>
               </li>
